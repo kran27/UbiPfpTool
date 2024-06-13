@@ -80,6 +80,7 @@ partial class Form1
         textBox2.Name = "textBox2";
         textBox2.Size = new Size(251, 23);
         textBox2.TabIndex = 1;
+        textBox2.UseSystemPasswordChar = true;
         // 
         // label1
         // 
@@ -106,7 +107,7 @@ partial class Form1
         label3.Name = "label3";
         label3.Size = new Size(129, 15);
         label3.TabIndex = 4;
-        label3.Text = "Image (click to upload)";
+        label3.Text = "Image (click to select or drag image here)";
         // 
         // pictureBox1
         // 
