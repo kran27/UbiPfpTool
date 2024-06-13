@@ -68,8 +68,6 @@ public partial class Form1 : Form
             
             var image128 = new Bitmap(scaled, new Size(128, 128));
             var image64 = new Bitmap(scaled, new Size(64, 64));
-            var xDefPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "My Games",
-                "XDefiant", "profilepicturescache", $"{name}.png");
             var notiPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Ubisoft",
                 "Ubisoft Game Launcher", "cache", "notifications", $"-{name}-default_256_256.png");
             var avatarsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Ubisoft",
@@ -77,8 +75,6 @@ public partial class Form1 : Form
             var avatars256Path = Path.Combine(avatarsPath, $"{name}_256.png");
             var avatars128Path = Path.Combine(avatarsPath, $"{name}_128.png");
             var avatars64Path = Path.Combine(avatarsPath, $"{name}_64.png");
-            if (File.Exists(xDefPath)) { File.SetAttributes(xDefPath, File.GetAttributes(xDefPath) & ~FileAttributes.ReadOnly); }
-            scaled.Save(xDefPath);
             if (File.Exists(notiPath)) { File.SetAttributes(notiPath, File.GetAttributes(notiPath) & ~FileAttributes.ReadOnly); }
             scaled.Save(notiPath);
             if (File.Exists(avatars256Path)) { File.SetAttributes(avatars256Path, File.GetAttributes(avatars256Path) & ~FileAttributes.ReadOnly); }

@@ -85,10 +85,7 @@ static class Program
                 var image256 = new Bitmap(imageBitmap, new Size(256, 256));
                 var image128 = new Bitmap(imageBitmap, new Size(128, 128));
                 var image64 = new Bitmap(imageBitmap, new Size(64, 64));
-
-                var xDefPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                    "My Games",
-                    "XDefiant", "profilepicturescache", $"{image.Name}.png");
+                
                 var notiPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
                     "Ubisoft",
                     "Ubisoft Game Launcher", "cache", "notifications", $"-{image.Name}-default_256_256.png");
@@ -98,9 +95,6 @@ static class Program
                 var avatars256Path = Path.Combine(avatarsPath, $"{image.Name}_256.png");
                 var avatars128Path = Path.Combine(avatarsPath, $"{image.Name}_128.png");
                 var avatars64Path = Path.Combine(avatarsPath, $"{image.Name}_64.png");
-                if (File.Exists(xDefPath))
-                    File.SetAttributes(xDefPath, File.GetAttributes(xDefPath) & ~FileAttributes.ReadOnly);
-                image256.Save(xDefPath);
                 if (File.Exists(notiPath))
                     File.SetAttributes(notiPath, File.GetAttributes(notiPath) & ~FileAttributes.ReadOnly);
                 image256.Save(notiPath);
