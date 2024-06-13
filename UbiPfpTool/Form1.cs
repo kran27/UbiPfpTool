@@ -7,6 +7,7 @@ namespace UbiPfpTool;
 
 public partial class Form1 : Form
 {
+    private string uplayPath = Program.uplayPath;
     public Form1()
     {
         InitializeComponent();
@@ -68,20 +69,22 @@ public partial class Form1 : Form
             
             var image128 = new Bitmap(scaled, new Size(128, 128));
             var image64 = new Bitmap(scaled, new Size(64, 64));
-            var notiPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Ubisoft",
-                "Ubisoft Game Launcher", "cache", "notifications", $"-{name}-default_256_256.png");
-            var avatarsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Ubisoft",
-                "Ubisoft Game Launcher", "cache", "avatars");
+            var notiPath = Path.Combine(uplayPath, "cache", "notifications", $"-{name}-default_256_256.png");
+            var avatarsPath = Path.Combine(uplayPath, "cache", "avatars");
+            var ubiPfpCache = Path.Combine(uplayPath, "cache", "ubipfps");
+            var ubi256Path = Path.Combine(ubiPfpCache, $"{name}_256.png");
+            var ubi128Path = Path.Combine(ubiPfpCache, $"{name}_128.png");
+            var ubi64Path = Path.Combine(ubiPfpCache, $"{name}_64.png");
+                
             var avatars256Path = Path.Combine(avatarsPath, $"{name}_256.png");
             var avatars128Path = Path.Combine(avatarsPath, $"{name}_128.png");
             var avatars64Path = Path.Combine(avatarsPath, $"{name}_64.png");
-            if (File.Exists(notiPath)) { File.SetAttributes(notiPath, File.GetAttributes(notiPath) & ~FileAttributes.ReadOnly); }
+            scaled.Save(ubi256Path);
+            image128.Save(ubi128Path);
+            image64.Save(ubi64Path);
             scaled.Save(notiPath);
-            if (File.Exists(avatars256Path)) { File.SetAttributes(avatars256Path, File.GetAttributes(avatars256Path) & ~FileAttributes.ReadOnly); }
             scaled.Save(avatars256Path);
-            if (File.Exists(avatars128Path)) { File.SetAttributes(avatars128Path, File.GetAttributes(avatars128Path) & ~FileAttributes.ReadOnly); }
             image128.Save(avatars128Path);
-            if (File.Exists(avatars64Path)) { File.SetAttributes(avatars64Path, File.GetAttributes(avatars64Path) & ~FileAttributes.ReadOnly); }
             image64.Save(avatars64Path);
             MessageBox.Show("Profile picture updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
