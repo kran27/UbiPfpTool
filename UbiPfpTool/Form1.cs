@@ -79,19 +79,14 @@ public partial class Form1 : Form
             var avatars64Path = Path.Combine(avatarsPath, $"{name}_64.png");
             if (File.Exists(xDefPath)) { File.SetAttributes(xDefPath, File.GetAttributes(xDefPath) & ~FileAttributes.ReadOnly); }
             scaled.Save(xDefPath);
-            File.SetAttributes(xDefPath, File.GetAttributes(xDefPath) | FileAttributes.ReadOnly);
             if (File.Exists(notiPath)) { File.SetAttributes(notiPath, File.GetAttributes(notiPath) & ~FileAttributes.ReadOnly); }
             scaled.Save(notiPath);
-            File.SetAttributes(notiPath, File.GetAttributes(notiPath) | FileAttributes.ReadOnly);
             if (File.Exists(avatars256Path)) { File.SetAttributes(avatars256Path, File.GetAttributes(avatars256Path) & ~FileAttributes.ReadOnly); }
             scaled.Save(avatars256Path);
-            File.SetAttributes(avatars256Path, File.GetAttributes(avatars256Path) | FileAttributes.ReadOnly);
             if (File.Exists(avatars128Path)) { File.SetAttributes(avatars128Path, File.GetAttributes(avatars128Path) & ~FileAttributes.ReadOnly); }
             image128.Save(avatars128Path);
-            File.SetAttributes(avatars128Path, File.GetAttributes(avatars128Path) | FileAttributes.ReadOnly);
             if (File.Exists(avatars64Path)) { File.SetAttributes(avatars64Path, File.GetAttributes(avatars64Path) & ~FileAttributes.ReadOnly); }
             image64.Save(avatars64Path);
-            File.SetAttributes(avatars64Path, File.GetAttributes(avatars64Path) | FileAttributes.ReadOnly);
             MessageBox.Show("Profile picture updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         else
